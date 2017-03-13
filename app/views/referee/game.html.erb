@@ -1,0 +1,27 @@
+<h1>Try your hand at the "Longest Word Game!"</h1>
+
+<h2>How to play</h2>
+<p>Press the button below</p>
+
+<!-- <p>1. Click "Generate a Wordbank to create a random selection of letters <br>
+2. As quickly as you can, create and type the longest word you can find in the random selection. <br>
+3. Click submit ASAP and your score will be calculated.</p> -->
+
+<form action="<%=game_path%>">
+  <!-- <input type="hidden" id="wordbox" name="generator"> -->
+  <input type="submit" id="wordbox" name="generator" value="Generate a WordBank">
+</form>
+
+<h2 class="hidden">Here is your wordbank!</h2>
+<p>
+<%= @grid.join(" ") %>
+</p>
+
+<form action="<%=score_path%>" method="GET">  <!-- action is where you want to send data  -->
+<!-- form should have method = "" 'GET' is default; data displayed in url or
+'POST' data is hidden in URL -->
+  <input type="text" id="answer" name="answer">
+  <input type="hidden" name="grid" value="<%= @grid.join("") %>">
+  <input type="hidden" name="start_time" value="<%= Time.now %>">
+  <input type="submit" value="Submit your word">
+</form>
